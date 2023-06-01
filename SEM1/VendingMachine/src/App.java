@@ -13,14 +13,11 @@ public class App {
         iMachine.addProduct(item1);
         iMachine.addProduct(item2);
         iMachine.addProduct(new Product(3, "Масло", "Масло", 59));
-
         iMachine.addProduct(new Bottle(4, "Water", "Water", 170, 1500));
-
         iMachine.addProduct(new HotDrink(4, "Coffee", "HotDrink", 70, 80));
         iMachine.addProduct(new HotDrink(4, "Tea", "HotDrink", 30, 90));
 
-        for (Product prod : iMachine.getProducts()) {
-            System.out.println(prod.toString());
-        }
+        MainFrame myFrame = new MainFrame();
+        myFrame.initialize(iMachine);
     }
 }
