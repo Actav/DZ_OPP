@@ -10,10 +10,6 @@ public class App {
         {
             promoList.add(new Promo(1, "Скидка 10%", 150));
             promoList.add(new Promo(2, "Скидка 90%", 2));
-            for (Promo promo : promoList) {
-                System.out.println(promo.toString());
-            }
-            System.out.println("\n");
         }
 
         // Список клиентов

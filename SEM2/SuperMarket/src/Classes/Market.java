@@ -27,7 +27,7 @@ public class Market implements iMarketBehaviour, iQueueBehaviour {
      */
     @Override
     public void acceptToMarket(iActorBehaviour actor) {
-        System.out.println(actor.getActor().getName() + " клиент ПРИШЕЛ в магазин ");
+        Logger.writeToLog(actor.getActor().getName() + " клиент ПРИШЕЛ в магазин ");
         takeInQueue(actor);
     }
 
@@ -39,7 +39,7 @@ public class Market implements iMarketBehaviour, iQueueBehaviour {
     @Override
     public void takeInQueue(iActorBehaviour actor) {
         this.queue.add(actor);
-        System.out.println(actor.getActor().getName() + " клиент ДОБАВЛЕН в очередь ");
+        Logger.writeToLog(actor.getActor().getName() + " клиент ДОБАВЛЕН в очередь ");
     }
 
     /**
@@ -51,7 +51,7 @@ public class Market implements iMarketBehaviour, iQueueBehaviour {
     public void releaseFromMarket(List<Actor> actors) {
         for (Actor actor : actors) {
             queue.remove(actor);
-            System.out.println(actor.getName() + " клиент УШЁЛ из магазина ");
+            Logger.writeToLog(actor.getName() + " клиент УШЁЛ из магазина ");
         }
     }
 
@@ -63,6 +63,7 @@ public class Market implements iMarketBehaviour, iQueueBehaviour {
         takeOrder();
         giveOrder();
         releaseFromQueue();
+        Logger.flushBuffer();
     }
 
     /**
@@ -73,7 +74,7 @@ public class Market implements iMarketBehaviour, iQueueBehaviour {
         for (iActorBehaviour actor : queue) {
             if (actor.isMakeOrder()) {
                 actor.setTakeOrder(true);
-                System.out.println(actor.getActor().getName() + " клиент ПОЛУЧИЛ свой заказ ");
+                Logger.writeToLog(actor.getActor().getName() + " клиент ПОЛУЧИЛ свой заказ ");
             }
         }
 
@@ -88,7 +89,7 @@ public class Market implements iMarketBehaviour, iQueueBehaviour {
         for (iActorBehaviour actor : queue) {
             if (actor.isTakeOrder()) {
                 releaseActors.add(actor.getActor());
-                System.out.println(actor.getActor().getName() + " клиент ИЗЪЯТ из очереди ");
+                Logger.writeToLog(actor.getActor().getName() + " клиент ИЗЪЯТ из очереди ");
             }
         }
         releaseFromMarket(releaseActors);
@@ -107,9 +108,9 @@ public class Market implements iMarketBehaviour, iQueueBehaviour {
 
                 if (!client.isReturnOrder()) {
                     if (typeId == 0) {
-                        System.out.println(clientName + " клиент СДЕЛАЛ заказ ");
+                        Logger.writeToLog(clientName + " клиент СДЕЛАЛ заказ ");
                     } else if (typeId == 2) {
-                        System.out.println(clientName + " VIP клиент СДЕЛАЛ заказ со скидкой 15%");
+                        Logger.writeToLog(clientName + " VIP клиент СДЕЛАЛ заказ со скидкой 15%");
                     } else if (typeId == 10) {
                         int promoId = client.getPromoId();
                         int quantityClient = client.getQuantityBuyPromoItems();
@@ -117,10 +118,10 @@ public class Market implements iMarketBehaviour, iQueueBehaviour {
 
                         if (quantityClient < quantityPromo) {
                             String promoName = this.promoList.get(promoId).getName();
-                            System.out.println(clientName + " клиент СДЕЛАЛ заказ по акции \"" + promoName + "\"");
+                            Logger.writeToLog(clientName + " клиент СДЕЛАЛ заказ по акции \"" + promoName + "\"");
                             this.promoList.get(promoId).downQuantity(quantityClient);
                         } else {
-                            System.out.println(clientName + " клиент НЕ СДЕЛАЛ заказ, акционного товара нет");
+                            Logger.writeToLog(clientName + " клиент НЕ СДЕЛАЛ заказ, акционного товара нет");
                         }
                     }
                 } else {
@@ -130,9 +131,9 @@ public class Market implements iMarketBehaviour, iQueueBehaviour {
                         this.promoList.get(promoId).upQuantity(quantityClient);
                         String promoName = this.promoList.get(promoId).getName();
 
-                        System.out.println(client.getName() + " клиент ВЕРНУЛ заказ по акции \"" + promoName + "\"");
+                        Logger.writeToLog(client.getName() + " клиент ВЕРНУЛ заказ по акции \"" + promoName + "\"");
                     } else {
-                        System.out.println(client.getName() + " клиент ВЕРНУЛ заказ ");
+                        Logger.writeToLog(client.getName() + " клиент ВЕРНУЛ заказ ");
                     }
                 }
 

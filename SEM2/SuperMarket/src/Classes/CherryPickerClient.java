@@ -16,8 +16,6 @@ public class CherryPickerClient extends Actor {
         super(name, typeId);
         this.promoId = promoId;
         this.quantityBuyPromoItems = quantityBuyPromoItems;
-
-        System.out.println(this.promoId);
     }
 
     /**
