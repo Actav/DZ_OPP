@@ -3,6 +3,7 @@ import java.util.Collections;
 import java.util.List;
 
 import Controllers.EmploeeController;
+import Services.AverageAge;
 import StudentDomen.Emploee;
 import StudentDomen.Person;
 import StudentDomen.PersonComparator;
@@ -73,5 +74,12 @@ public class App {
         //empContr.paySalary(per1);
         //empContr.paySalary(s1);
 
+        List<Emploee> emploees = new ArrayList<>();
+        emploees.add(new Emploee("Иван", "Иванов", 40, "basic"));
+        emploees.add(new Emploee("Пётр", "Петров", 25, "basic"));
+        emploees.add(new Emploee("Василий", "Васильев", 33, "basic"));
+
+        double averageAgeEmploees = new AverageAge<>(emploees, 3).getAverageAge();
+        System.out.println("Средний возраст Emploees: " + averageAgeEmploees);
     }
 }
