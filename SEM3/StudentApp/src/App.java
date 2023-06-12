@@ -5,6 +5,7 @@ import java.util.List;
 import StudentDomen.Person;
 import StudentDomen.Student;
 import StudentDomen.StudentGroup;
+import StudentDomen.StudentSteam;
 
 public class App {
     public static void main(String[] args) throws Exception {
@@ -33,17 +34,52 @@ public class App {
         StudentGroup group4335 = new StudentGroup(listStud, 4335);
         //System.out.println(group4335.toString());
 
-        for(Student stud:group4335)
-        {
-            System.out.println(stud.toString());
-        }
+//        for(Student stud:group4335)
+//        {
+//            System.out.println(stud.toString());
+//        }
 
         System.out.println("===============================");
         Collections.sort(group4335.getGroup());
 
-        for(Student stud:group4335)
-        {
-            System.out.println(stud.toString());
+//        for(Student stud:group4335)
+//        {
+//            System.out.println(stud.toString());
+//        }
+
+        // DZ_SEM3
+        // Добавим ещё группу студентов
+        List<Student> listStud_2 = new ArrayList<>();
+        listStud_2.add(new Student("Пётр", "Стрельцов", 22, 401));
+        listStud_2.add(new Student("Василий", "Пупкин", 24, 421));
+        listStud_2.add(new Student("Анна", "Иоанна", 21, 403));
+        listStud_2.add(new Student("Ольга", "Теремок", 21, 411));
+
+        // Добавим студентов в группу
+        StudentGroup group4555 = new StudentGroup(listStud_2, 4555);
+        StudentGroup group4444 = new StudentGroup(listStud_2, 4444);
+
+        // Создадим поток из групп студентов
+        List<StudentGroup> groups = new ArrayList<>();
+        groups.add(group4555);
+        groups.add(group4335);
+        groups.add(group4444);
+
+        StudentSteam steam = new StudentSteam(groups, 969);
+
+        // Выведем содержание групп в консоль
+        for (StudentGroup group : steam) {
+            System.out.println(group);
         }
+
+        // Отсортируем поток по размеру групп
+        Collections.sort(steam.getSteam());
+
+        System.out.println();
+        for (StudentGroup group : steam) {
+            System.out.println(group);
+        }
+
+        System.out.println("\n" + steam);
     }
 }

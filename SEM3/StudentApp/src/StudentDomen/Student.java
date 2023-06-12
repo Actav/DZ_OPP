@@ -33,18 +33,9 @@ public class Student extends Person implements Comparable<Student>{
 
     @Override
     public int compareTo(Student o) {
-        System.out.println(super.getFirstName()+" - "+o.getFirstName());
         if(this.getAge()==o.getAge())
         {
-            if(this.getId()==o.getId())
-            {
-                return 0;
-            }
-            if(this.getId()<o.getId())
-            {
-                return -1;
-            }
-            return 1;
+            return Integer.compare(this.getId(), o.getId());
         }
         if(this.getAge()<o.getAge())
         {
