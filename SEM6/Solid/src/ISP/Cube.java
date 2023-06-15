@@ -1,7 +1,5 @@
 package ISP;
 
-import java.awt.*;
-
 public class Cube implements Shape2D, Shape3D {
     private final int edge;
 

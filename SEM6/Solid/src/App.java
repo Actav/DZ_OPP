@@ -10,7 +10,6 @@ import LSP.Square;
 import OCP1.*;
 import OCP2.*;
 
-import java.awt.*;
 import java.util.ArrayList;
 import java.util.List;
 
