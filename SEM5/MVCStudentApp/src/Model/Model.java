@@ -5,7 +5,7 @@ import java.util.List;
 import Controller.iGetModel;
 
 public class Model implements iGetModel {
-    private List<Student> students;
+    private final List<Student> students;
 
     public Model(List<Student> students) {
         this.students = students;
@@ -14,5 +14,10 @@ public class Model implements iGetModel {
     public List<Student> getAllStudents()
     {
         return students;
-    }    
+    }
+
+    @Override
+    public boolean deleteStudent(int studentId) {
+        return false;
+    }
 }

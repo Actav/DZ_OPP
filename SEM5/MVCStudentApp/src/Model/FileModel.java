@@ -49,6 +49,11 @@ public class FileModel implements iGetModel {
         return students;
     }
 
+    @Override
+    public boolean deleteStudent(int studentId) {
+        return false;
+    }
+
     public void saveAllStudentToFile(List<Student> students)
     {
         try(FileWriter fw = new FileWriter(fileName, true))
