@@ -1,6 +1,6 @@
-package GUI;
+package View;
 
-import Calc.*;
+import Model.*;
 
 import javax.swing.*;
 import java.awt.*;

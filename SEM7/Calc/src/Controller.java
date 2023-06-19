@@ -1,8 +1,8 @@
-import GUI.CalculatorFrame;
+import View.CalculatorFrame;
 
 import javax.swing.*;
 
-public class Main {
+public class Controller {
     public static void main(String[] args) {
         SwingUtilities.invokeLater(() -> {
             CalculatorFrame calculatorFrame = new CalculatorFrame();

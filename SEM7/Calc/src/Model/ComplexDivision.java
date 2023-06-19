@@ -1,4 +1,4 @@
-package Calc;
+package Model;
 
 public class ComplexDivision implements iComplexOperation {
     @Override

@@ -1,4 +1,4 @@
-package Calc;
+package Model;
 
 public record ComplexNumber(double real, double imaginary) {
     @Override

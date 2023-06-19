@@ -1,4 +1,4 @@
-package Calc;
+package Model;
 
 public class ComplexAddition implements iComplexOperation {
     @Override
